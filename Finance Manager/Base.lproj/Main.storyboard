@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11134" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11134"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -673,7 +674,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Finance_Manager" customModuleProvider="target"/>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -703,15 +704,92 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Finance_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9Ec-BL-Ajc">
+                                <rect key="frame" x="198" y="206" width="85" height="24"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Teller API" id="NWN-xM-126">
+                                    <font key="font" metaFont="system" size="20"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tl2-Pu-TcF">
+                                <rect key="frame" x="20" y="154" width="440" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="9zm-PV-vNC">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6aa-5O-AEJ">
+                                <rect key="frame" x="0.0" y="-1" width="480" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="wN8-To-sg4"/>
+                                </constraints>
+                                <buttonCell key="cell" type="roundTextured" title="Connect Teller" bezelStyle="texturedRounded" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="f3a-xQ-0kf">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <color key="contentTintColor" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
+                                <connections>
+                                    <action selector="connectTeller:" target="XfG-lQ-9wD" id="w1d-rt-cdg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="tl2-Pu-TcF" firstAttribute="top" secondItem="9Ec-BL-Ajc" secondAttribute="bottom" constant="30" id="4y1-n0-Nat"/>
+                            <constraint firstItem="9Ec-BL-Ajc" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="40" id="ICd-K9-h13"/>
+                            <constraint firstItem="9Ec-BL-Ajc" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="LSZ-6g-z1Y"/>
+                            <constraint firstAttribute="bottom" secondItem="6aa-5O-AEJ" secondAttribute="bottom" id="MkP-XS-TR5"/>
+                            <constraint firstItem="tl2-Pu-TcF" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="RKU-VK-zpd"/>
+                            <constraint firstItem="6aa-5O-AEJ" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="VOj-QP-d96"/>
+                            <constraint firstAttribute="trailing" secondItem="tl2-Pu-TcF" secondAttribute="trailing" constant="20" id="gZw-CS-jbl"/>
+                            <constraint firstAttribute="trailing" secondItem="6aa-5O-AEJ" secondAttribute="trailing" id="gdx-3R-0Mm"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tellerApiInput" destination="tl2-Pu-TcF" id="icP-ha-D1w"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="655"/>
+        </scene>
+        <!--MainInfo-->
+        <scene sceneID="zCE-fx-PB5">
+            <objects>
+                <viewController title="MainInfo" storyboardIdentifier="MainInfo" id="sh3-IU-bWM" customClass="MainInfoViewController" customModule="Finance_Manager" sceneMemberID="viewController">
+                    <view key="view" id="Cc9-ox-pTB">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="17"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8ad-d8-75A">
+                                <rect key="frame" x="-2" y="0.0" width="454" height="17"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="AvS-bt-fiJ">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="8ad-d8-75A" firstAttribute="top" secondItem="Cc9-ox-pTB" secondAttribute="top" id="47Z-fD-JOA"/>
+                            <constraint firstItem="8ad-d8-75A" firstAttribute="leading" secondItem="Cc9-ox-pTB" secondAttribute="leading" id="8k3-Bt-XmY"/>
+                            <constraint firstAttribute="bottom" secondItem="8ad-d8-75A" secondAttribute="bottom" id="YI5-lm-h7p"/>
+                            <constraint firstAttribute="trailing" secondItem="8ad-d8-75A" secondAttribute="trailing" id="z5p-pq-avX"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="info" destination="8ad-d8-75A" id="gA7-ad-xDA"/>
+                    </connections>
+                </viewController>
+                <customObject id="h7A-nO-9cL" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="683" y="669.5"/>
         </scene>
     </scenes>
 </document>
