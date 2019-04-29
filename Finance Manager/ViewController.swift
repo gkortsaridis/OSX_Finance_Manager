@@ -36,22 +36,33 @@ class ViewController: NSViewController {
             "Accept": "application/json"
         ]
         
-        Alamofire.request(url, headers:headers).responseJSON { response in
+        Alamofire.request(url, headers:headers).responseString { response in
             if let json = response.result.value {
-                print("JSON: \(json)") // serialized json response
-                openMainInfo(json)
+                //print("JSON: \(json)") // serialized json response
+                
+                if let myViewController = self.storyboard?.instantiateController(withIdentifier: "MainInfo") as? MainInfoViewController {
+                    AppDelegate.accountsInfo = json
+                    self.view.window?.contentViewController = myViewController
+                    AppDelegate.loggedIn = true
+                }
             }
         }
         
     }
     
-    
-    func openMainInfo(json: Any){
-        let mainInfoVC : MainInfoViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainInfo") as! MainInfoViewController
-        
-        mainInfoVC.accountsInfoTxt = json
-        self.present(mainInfoVC, animated: true, completion: nil)
-    }
-    
 }
 
+extension ViewController {
+    // MARK: Storyboard instantiation
+    static func freshController() -> ViewController {
+        //1.
+        let storyboard = NSStoryboard(name: "Main", bundle: nil)
+        //2.
+        let identifier = "ViewController"
+        //3.
+        guard let viewcontroller = storyboard.instantiateController(withIdentifier: identifier) as? ViewController else {
+            fatalError("Why cant i find QuotesViewController? - Check Main.storyboard")
+        }
+        return viewcontroller
+    }
+}

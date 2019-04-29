@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -680,31 +680,10 @@
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
-        <!--Window Controller-->
-        <scene sceneID="R2V-B0-nI4">
-            <objects>
-                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <connections>
-                            <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
-                        </connections>
-                    </window>
-                    <connections>
-                        <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
-                    </connections>
-                </windowController>
-                <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="75" y="250"/>
-        </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Finance_Manager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="XfG-lQ-9wD" customClass="ViewController" customModule="Finance_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -764,32 +743,110 @@
             <objects>
                 <viewController title="MainInfo" storyboardIdentifier="MainInfo" id="sh3-IU-bWM" customClass="MainInfoViewController" customModule="Finance_Manager" sceneMemberID="viewController">
                     <view key="view" id="Cc9-ox-pTB">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="17"/>
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="303"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8ad-d8-75A">
-                                <rect key="frame" x="-2" y="0.0" width="454" height="17"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="AvS-bt-fiJ">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="122" horizontalPageScroll="10" verticalLineScroll="122" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Yz-mI-qeW">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="303"/>
+                                <clipView key="contentView" id="fyd-za-lUK">
+                                    <rect key="frame" x="1" y="1" width="238" height="301"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="120" rowSizeStyle="automatic" viewBased="YES" id="38R-kq-lfS">
+                                            <rect key="frame" x="0.0" y="0.0" width="238" height="301"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <size key="intercellSpacing" width="3" height="2"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                            <tableColumns>
+                                                <tableColumn width="235" minWidth="40" maxWidth="1000" id="wmO-hJ-GvP">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Account">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="Dvo-Nm-ZSg">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <prototypeCellViews>
+                                                        <tableCellView identifier="accountsCell" id="rNj-i8-4kj" customClass="AccountsTableCellView" customModule="Finance_Manager" customModuleProvider="target">
+                                                            <rect key="frame" x="1" y="1" width="235" height="120"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <textField identifier="accountName" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jr4-VL-mlb">
+                                                                    <rect key="frame" x="14" y="95" width="215" height="17"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="Bank Account" id="Xwf-bK-qEJ">
+                                                                        <font key="font" metaFont="systemSemibold" size="13"/>
+                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                </textField>
+                                                                <textField identifier="accountAmount" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8H8-0a-Va8">
+                                                                    <rect key="frame" x="14" y="60" width="215" height="27"/>
+                                                                    <textFieldCell key="cell" lineBreakMode="clipping" title="9999£" id="bsh-9m-xSG">
+                                                                        <font key="font" metaFont="system" size="22"/>
+                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                </textField>
+                                                                <imageView identifier="accountBankImage" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UHj-t7-T3H">
+                                                                    <rect key="frame" x="16" y="20" width="48" height="32"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSAdvanced" id="CM8-YJ-3rR"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="jr4-VL-mlb" firstAttribute="top" secondItem="rNj-i8-4kj" secondAttribute="top" constant="8" id="72I-uh-UJa"/>
+                                                                <constraint firstItem="8H8-0a-Va8" firstAttribute="leading" secondItem="rNj-i8-4kj" secondAttribute="leading" constant="16" id="I1A-Mm-NLC"/>
+                                                                <constraint firstItem="jr4-VL-mlb" firstAttribute="leading" secondItem="rNj-i8-4kj" secondAttribute="leading" constant="16" id="UBu-sh-wQe"/>
+                                                                <constraint firstItem="8H8-0a-Va8" firstAttribute="top" secondItem="jr4-VL-mlb" secondAttribute="bottom" constant="8" id="Ybv-7k-8fj"/>
+                                                                <constraint firstAttribute="trailing" secondItem="jr4-VL-mlb" secondAttribute="trailing" constant="8" id="i6q-iN-g89"/>
+                                                                <constraint firstAttribute="trailing" secondItem="8H8-0a-Va8" secondAttribute="trailing" constant="8" id="nrU-hv-rHI"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="accountAmount" destination="8H8-0a-Va8" id="tH9-50-xlH"/>
+                                                                <outlet property="accountBankIcon" destination="UHj-t7-T3H" id="HZa-Mh-58i"/>
+                                                                <outlet property="accountName" destination="jr4-VL-mlb" id="tFc-dV-IZF"/>
+                                                            </connections>
+                                                        </tableCellView>
+                                                    </prototypeCellViews>
+                                                </tableColumn>
+                                            </tableColumns>
+                                        </tableView>
+                                    </subviews>
+                                </clipView>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="Mgh-L9-Tct"/>
+                                </constraints>
+                                <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="I3V-X7-04C">
+                                    <rect key="frame" x="1" y="286" width="238" height="16"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="c9f-XL-MhP">
+                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="8ad-d8-75A" firstAttribute="top" secondItem="Cc9-ox-pTB" secondAttribute="top" id="47Z-fD-JOA"/>
-                            <constraint firstItem="8ad-d8-75A" firstAttribute="leading" secondItem="Cc9-ox-pTB" secondAttribute="leading" id="8k3-Bt-XmY"/>
-                            <constraint firstAttribute="bottom" secondItem="8ad-d8-75A" secondAttribute="bottom" id="YI5-lm-h7p"/>
-                            <constraint firstAttribute="trailing" secondItem="8ad-d8-75A" secondAttribute="trailing" id="z5p-pq-avX"/>
+                            <constraint firstItem="2Yz-mI-qeW" firstAttribute="top" secondItem="Cc9-ox-pTB" secondAttribute="top" id="1fc-zY-cgC"/>
+                            <constraint firstItem="2Yz-mI-qeW" firstAttribute="leading" secondItem="Cc9-ox-pTB" secondAttribute="leading" id="LbJ-sj-Smx"/>
+                            <constraint firstAttribute="bottom" secondItem="2Yz-mI-qeW" secondAttribute="bottom" id="zNk-wJ-KFn"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="info" destination="8ad-d8-75A" id="gA7-ad-xDA"/>
+                        <outlet property="accountsTableView" destination="38R-kq-lfS" id="L7I-8r-1DC"/>
                     </connections>
                 </viewController>
                 <customObject id="h7A-nO-9cL" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="683" y="669.5"/>
+            <point key="canvasLocation" x="681" y="655.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSAdvanced" width="32" height="32"/>
+    </resources>
 </document>
