@@ -705,25 +705,30 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6aa-5O-AEJ">
-                                <rect key="frame" x="0.0" y="-1" width="480" height="41"/>
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="wN8-To-sg4"/>
                                 </constraints>
-                                <buttonCell key="cell" type="roundTextured" title="Connect Teller" bezelStyle="texturedRounded" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="f3a-xQ-0kf">
+                                <buttonCell key="cell" type="roundTextured" title="Connect Teller" bezelStyle="texturedRounded" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="f3a-xQ-0kf">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
-                                <color key="contentTintColor" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
+                                <color key="contentTintColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                 <connections>
                                     <action selector="connectTeller:" target="XfG-lQ-9wD" id="w1d-rt-cdg"/>
                                 </connections>
                             </button>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Jlc-ZZ-NN5">
+                                <rect key="frame" x="232" y="127" width="16" height="16"/>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
                             <constraint firstItem="tl2-Pu-TcF" firstAttribute="top" secondItem="9Ec-BL-Ajc" secondAttribute="bottom" constant="30" id="4y1-n0-Nat"/>
                             <constraint firstItem="9Ec-BL-Ajc" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="40" id="ICd-K9-h13"/>
+                            <constraint firstItem="Jlc-ZZ-NN5" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="KQY-im-mrV"/>
                             <constraint firstItem="9Ec-BL-Ajc" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="LSZ-6g-z1Y"/>
                             <constraint firstAttribute="bottom" secondItem="6aa-5O-AEJ" secondAttribute="bottom" id="MkP-XS-TR5"/>
+                            <constraint firstItem="Jlc-ZZ-NN5" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="NZv-Xy-fxH"/>
                             <constraint firstItem="tl2-Pu-TcF" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="20" id="RKU-VK-zpd"/>
                             <constraint firstItem="6aa-5O-AEJ" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="VOj-QP-d96"/>
                             <constraint firstAttribute="trailing" secondItem="tl2-Pu-TcF" secondAttribute="trailing" constant="20" id="gZw-CS-jbl"/>
@@ -731,6 +736,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="loadingIndicator" destination="Jlc-ZZ-NN5" id="ysi-Kb-hc1"/>
                         <outlet property="tellerApiInput" destination="tl2-Pu-TcF" id="icP-ha-D1w"/>
                     </connections>
                 </viewController>

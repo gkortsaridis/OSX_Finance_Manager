@@ -12,11 +12,11 @@ import Alamofire
 class ViewController: NSViewController {
 
     @IBOutlet weak var tellerApiInput: NSTextField!
-    
+    @IBOutlet weak var loadingIndicator: NSProgressIndicator!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        loadingIndicator.isHidden = true
         // Do any additional setup after loading the view.
     }
 
@@ -35,11 +35,13 @@ class ViewController: NSViewController {
             "Authorization": token,
             "Accept": "application/json"
         ]
-        
+        loadingIndicator.isHidden = false
+
         Alamofire.request(url, headers:headers).responseString { response in
             if let json = response.result.value {
                 //print("JSON: \(json)") // serialized json response
-                
+                self.loadingIndicator.isHidden = true
+
                 if let myViewController = self.storyboard?.instantiateController(withIdentifier: "MainInfo") as? MainInfoViewController {
                     AppDelegate.accountsInfo = json
                     self.view.window?.contentViewController = myViewController
