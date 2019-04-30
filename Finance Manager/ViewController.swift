@@ -13,11 +13,17 @@ class ViewController: NSViewController {
 
     @IBOutlet weak var tellerApiInput: NSTextField!
     @IBOutlet weak var loadingIndicator: NSProgressIndicator!
+    @IBOutlet weak var saveToken: NSButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadingIndicator.isHidden = true
-        // Do any additional setup after loading the view.
+
+        let defaults = UserDefaults.standard
+        let token = defaults.string(forKey: "token")
+        if(token != nil){
+            tellerApiInput.stringValue = token!
+        }
     }
 
     override var representedObject: Any? {
@@ -28,8 +34,9 @@ class ViewController: NSViewController {
 
     @IBAction func connectTeller(_ sender: Any) {
 
-        print(tellerApiInput.debugDescription)
-        let token = "Bearer ZHPR5AU2NEWYUVKBRF4TWNSRFJV2RZEPCIYGRDY2VMI7ABBF4QDSE4NFODYIYP43"
+        print(saveToken.state)
+        
+        let token = "Bearer "+tellerApiInput.stringValue
         let url = "https://api.teller.io/accounts"
         let headers: HTTPHeaders = [
             "Authorization": token,
@@ -42,6 +49,11 @@ class ViewController: NSViewController {
                 //print("JSON: \(json)") // serialized json response
                 self.loadingIndicator.isHidden = true
 
+                if(self.saveToken.state.rawValue == 1){
+                    let defaults = UserDefaults.standard
+                    defaults.set(self.tellerApiInput.stringValue, forKey: "token")
+                }
+                
                 if let myViewController = self.storyboard?.instantiateController(withIdentifier: "MainInfo") as? MainInfoViewController {
                     AppDelegate.accountsInfo = json
                     self.view.window?.contentViewController = myViewController
