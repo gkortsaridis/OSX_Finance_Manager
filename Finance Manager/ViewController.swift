@@ -17,7 +17,6 @@ class ViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadingIndicator.isHidden = true
 
         let defaults = UserDefaults.standard
         let token = defaults.string(forKey: "token")
@@ -33,21 +32,18 @@ class ViewController: NSViewController {
     }
 
     @IBAction func connectTeller(_ sender: Any) {
-
-        print(saveToken.state)
-        
         let token = "Bearer "+tellerApiInput.stringValue
         let url = "https://api.teller.io/accounts"
         let headers: HTTPHeaders = [
             "Authorization": token,
             "Accept": "application/json"
         ]
-        loadingIndicator.isHidden = false
+        self.loadingIndicator.startAnimation(nil)
 
         Alamofire.request(url, headers:headers).responseString { response in
             if let json = response.result.value {
                 //print("JSON: \(json)") // serialized json response
-                self.loadingIndicator.isHidden = true
+                self.loadingIndicator.stopAnimation(nil)
 
                 if(self.saveToken.state.rawValue == 1){
                     let defaults = UserDefaults.standard

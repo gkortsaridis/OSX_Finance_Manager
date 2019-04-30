@@ -718,7 +718,7 @@
                                     <action selector="connectTeller:" target="XfG-lQ-9wD" id="w1d-rt-cdg"/>
                                 </connections>
                             </button>
-                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Jlc-ZZ-NN5">
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Jlc-ZZ-NN5">
                                 <rect key="frame" x="232" y="127" width="16" height="16"/>
                             </progressIndicator>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7ab-IR-tN1">
@@ -761,13 +761,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="450" height="303"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="122" horizontalPageScroll="10" verticalLineScroll="122" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Yz-mI-qeW">
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="71" horizontalPageScroll="10" verticalLineScroll="71" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Yz-mI-qeW">
                                 <rect key="frame" x="0.0" y="0.0" width="150" height="303"/>
                                 <clipView key="contentView" id="fyd-za-lUK">
                                     <rect key="frame" x="1" y="1" width="148" height="301"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView identifier="accountsTableView" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="120" rowSizeStyle="automatic" viewBased="YES" id="38R-kq-lfS">
+                                        <tableView identifier="accountsTableView" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="69" rowSizeStyle="automatic" viewBased="YES" id="38R-kq-lfS">
                                             <rect key="frame" x="0.0" y="0.0" width="148" height="301"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -788,11 +788,11 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="accountsCell" id="rNj-i8-4kj" customClass="AccountsTableCellView" customModule="Finance_Manager" customModuleProvider="target">
-                                                            <rect key="frame" x="1" y="1" width="145" height="120"/>
+                                                            <rect key="frame" x="1" y="1" width="145" height="69"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField identifier="accountName" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jr4-VL-mlb">
-                                                                    <rect key="frame" x="14" y="95" width="125" height="17"/>
+                                                                    <rect key="frame" x="14" y="44" width="125" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Bank Account" id="Xwf-bK-qEJ">
                                                                         <font key="font" metaFont="systemSemibold" size="13"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -800,18 +800,13 @@
                                                                     </textFieldCell>
                                                                 </textField>
                                                                 <textField identifier="accountAmount" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8H8-0a-Va8">
-                                                                    <rect key="frame" x="14" y="60" width="125" height="27"/>
+                                                                    <rect key="frame" x="14" y="9" width="125" height="27"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="9999£" id="bsh-9m-xSG">
                                                                         <font key="font" metaFont="system" size="22"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
-                                                                <imageView identifier="accountBankImage" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UHj-t7-T3H">
-                                                                    <rect key="frame" x="16" y="20" width="48" height="32"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSAdvanced" id="CM8-YJ-3rR"/>
-                                                                </imageView>
                                                             </subviews>
                                                             <constraints>
                                                                 <constraint firstItem="jr4-VL-mlb" firstAttribute="top" secondItem="rNj-i8-4kj" secondAttribute="top" constant="8" id="72I-uh-UJa"/>
@@ -823,7 +818,6 @@
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="accountAmount" destination="8H8-0a-Va8" id="tH9-50-xlH"/>
-                                                                <outlet property="accountBankIcon" destination="UHj-t7-T3H" id="HZa-Mh-58i"/>
                                                                 <outlet property="accountName" destination="jr4-VL-mlb" id="tFc-dV-IZF"/>
                                                             </connections>
                                                         </tableCellView>
@@ -884,7 +878,7 @@
                                                                     </textFieldCell>
                                                                 </textField>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SNi-ua-Bat">
-                                                                    <rect key="frame" x="8" y="10" width="127" height="17"/>
+                                                                    <rect key="frame" x="8" y="10" width="279" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="UBER blah blah blah" id="tlZ-o9-Aqj">
                                                                         <font key="font" metaFont="system"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -907,6 +901,7 @@
                                                                 <constraint firstItem="6Ac-CJ-5Rb" firstAttribute="leading" secondItem="jhS-GY-6CJ" secondAttribute="leading" constant="10" id="cf3-oV-ltU"/>
                                                                 <constraint firstItem="Vyt-bM-loD" firstAttribute="top" secondItem="jhS-GY-6CJ" secondAttribute="top" constant="14" id="gjz-HT-2ls"/>
                                                                 <constraint firstAttribute="trailing" secondItem="Vyt-bM-loD" secondAttribute="trailing" constant="10" id="hXi-fI-exr"/>
+                                                                <constraint firstAttribute="trailing" secondItem="SNi-ua-Bat" secondAttribute="trailing" constant="10" id="qqO-w5-vDq"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="transactionAmount" destination="6Ac-CJ-5Rb" id="KU6-QJ-Zci"/>
@@ -939,7 +934,7 @@
                                     <action selector="goToSettings:" target="sh3-IU-bWM" id="mKv-s5-UEt"/>
                                 </connections>
                             </button>
-                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="R9Z-tv-s3Y">
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="R9Z-tv-s3Y">
                                 <rect key="frame" x="160" y="276" width="16" height="16"/>
                             </progressIndicator>
                         </subviews>
@@ -961,6 +956,7 @@
                     </view>
                     <connections>
                         <outlet property="accountsTableView" destination="38R-kq-lfS" id="L7I-8r-1DC"/>
+                        <outlet property="transactionsLoading" destination="R9Z-tv-s3Y" id="iZC-6o-MLG"/>
                         <outlet property="transactionsTableView" destination="LaP-tM-2Ml" id="unq-xB-K8R"/>
                     </connections>
                 </viewController>
@@ -984,6 +980,5 @@
     </scenes>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
-        <image name="NSAdvanced" width="32" height="32"/>
     </resources>
 </document>

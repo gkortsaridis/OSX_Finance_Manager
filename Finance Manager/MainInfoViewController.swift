@@ -14,6 +14,7 @@ class MainInfoViewController: NSViewController {
     var selectedAccount = 0
     @IBOutlet weak var accountsTableView: NSTableView!
     @IBOutlet weak var transactionsTableView: NSTableView!
+    @IBOutlet weak var transactionsLoading: NSProgressIndicator!
     var accountsInfoTxt:String = ""
     var accountsJson:([Dictionary<String, Any>])? = nil
     var transactionsJson:([Dictionary<String, Any>])? = nil
@@ -22,7 +23,7 @@ class MainInfoViewController: NSViewController {
         super.viewDidLoad()
         accountsTableView.delegate = self
         accountsTableView.dataSource = self
-        accountsTableView.rowHeight = 112
+        accountsTableView.rowHeight = 70
         
         transactionsTableView.delegate = self
         transactionsTableView.dataSource = self
@@ -46,7 +47,7 @@ class MainInfoViewController: NSViewController {
     }
     
     func getTransactions(url: String){
-        
+        self.transactionsLoading.startAnimation(nil)
         let token = "Bearer ZHPR5AU2NEWYUVKBRF4TWNSRFJV2RZEPCIYGRDY2VMI7ABBF4QDSE4NFODYIYP43"
         let headers: HTTPHeaders = [
             "Authorization": token,
@@ -54,6 +55,7 @@ class MainInfoViewController: NSViewController {
         ]
         Alamofire.request(url, headers:headers).responseJSON { response in
             if let json = response.result.value {
+                self.transactionsLoading.stopAnimation(nil)
                 self.transactionsJson = (json as! ([Dictionary<String, Any>]))
                 self.transactionsTableView.reloadData()
             }
@@ -109,8 +111,6 @@ extension MainInfoViewController: NSTableViewDelegate {
             var name: String = ""
             var amount: String = ""
             var currency: String = ""
-            var bank: String = ""
-            var bankImg: NSImage = NSImage(named:"bank")!
             // 1
             guard let item = accountsJson?[row] else {
                 return nil
@@ -124,8 +124,6 @@ extension MainInfoViewController: NSTableViewDelegate {
                 if(currency == "GBP"){ currency = "£" }
                 else if(currency == "EUR"){ currency = "€" }
                 if(currency == "USD"){ currency = "$" }
-                bank = item["institution"] as! String
-                if(bank.lowercased() == "hsbc"){ bankImg = NSImage(named: "hsbc")! }
                 cellIdentifier = CellIdentifiers.AccountCell
             }
             
@@ -133,7 +131,6 @@ extension MainInfoViewController: NSTableViewDelegate {
             if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: cellIdentifier), owner: nil) as? AccountsTableCellView {
                 cell.accountName?.stringValue = name
                 cell.accountAmount?.stringValue = amount+" "+currency
-                cell.accountBankIcon?.image = bankImg
                 return cell
             }
         }else{
