@@ -24,6 +24,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let button = statusItem.button {
             button.image = NSImage(named:NSImage.Name("StatusBarButtonImage"))
             button.action = #selector(togglePopover(_:))
+            button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         }
         
         eventMonitor = EventMonitor(mask: [.leftMouseDown, .rightMouseDown]) { [weak self] event in
@@ -33,23 +34,45 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
+    @objc func openTeller(_ sender: Any?) {
+        let url = URL(string: "https://teller.io/")!
+        NSWorkspace.shared.open(url)
+    }
+    
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
 
     @objc func togglePopover(_ sender: Any?) {
-        if(AppDelegate.loggedIn){
-            popover.contentViewController = MainInfoViewController.freshController()
-        }else{
-            popover.contentViewController = ViewController.freshController()
-        }
-
+        let event = NSApp.currentEvent!
         
-        if popover.isShown {
-            closePopover(sender: sender)
+        if event.type == NSEvent.EventType.rightMouseUp {
+            let menu = NSMenu()
+            menu.addItem(NSMenuItem(title: "Open Teller", action: #selector(openTeller(_:)), keyEquivalent: "P"))
+            menu.addItem(NSMenuItem.separator())
+            menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
+            
+            statusItem.menu = menu
+            
+            print("Right click")
         } else {
-            showPopover(sender: sender)
+            
+            if(AppDelegate.loggedIn){
+                popover.contentViewController = MainInfoViewController.freshController()
+            }else{
+                popover.contentViewController = ViewController.freshController()
+            }
+            
+            
+            if popover.isShown {
+                closePopover(sender: sender)
+            } else {
+                showPopover(sender: sender)
+            }
+            
         }
+        
+        
     }
     
     func showPopover(sender: Any?) {

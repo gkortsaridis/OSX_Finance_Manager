@@ -72,7 +72,6 @@ class MainInfoViewController: NSViewController {
     }
     
     @objc func goToAccountSettings(_ sender: Any){
-        print(sender)
         if let myViewController = self.storyboard?.instantiateController(withIdentifier: "accountSettings") as? AccountSettingsViewController {
             myViewController.accountJson = accountsJson![(sender as AnyObject).tag!]
             self.view.window?.contentViewController = myViewController
