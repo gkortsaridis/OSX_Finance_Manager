@@ -18,6 +18,7 @@ class MainInfoViewController: NSViewController {
     var accountsInfoTxt:String = ""
     var accountsJson:([Dictionary<String, Any>])? = nil
     var transactionsJson:([Dictionary<String, Any>])? = nil
+    var accountForSettings: Int? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +71,13 @@ class MainInfoViewController: NSViewController {
         }
     }
     
+    @objc func goToAccountSettings(_ sender: Any){
+        print(sender)
+        if let myViewController = self.storyboard?.instantiateController(withIdentifier: "accountSettings") as? AccountSettingsViewController {
+            myViewController.accountJson = accountsJson![(sender as AnyObject).tag!]
+            self.view.window?.contentViewController = myViewController
+        }
+    }
     
 }
 
@@ -118,7 +126,14 @@ extension MainInfoViewController: NSTableViewDelegate {
             
             // 2
             if tableColumn == tableView.tableColumns[0] {
-                name = item["name"] as! String
+                
+                let defaults = UserDefaults.standard
+                let savedName = defaults.string(forKey: item["id"] as! String)
+                if(savedName != nil){
+                    name = savedName!
+                }else{
+                    name = item["name"] as! String
+                }
                 amount = item["balance"] as! String
                 currency = item["currency"] as! String
                 if(currency == "GBP"){ currency = "£" }
@@ -131,6 +146,8 @@ extension MainInfoViewController: NSTableViewDelegate {
             if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: cellIdentifier), owner: nil) as? AccountsTableCellView {
                 cell.accountName?.stringValue = name
                 cell.accountAmount?.stringValue = amount+" "+currency
+                cell.accountSettings.tag = row
+                cell.accountSettings.action = #selector(goToAccountSettings(_:))
                 return cell
             }
         }else{
@@ -167,7 +184,7 @@ extension MainInfoViewController: NSTableViewDelegate {
 class AccountsTableCellView: NSTableCellView {
     @IBOutlet weak var accountName: NSTextField!
     @IBOutlet weak var accountAmount: NSTextField!
-    @IBOutlet weak var accountBankIcon: NSImageView!
+    @IBOutlet weak var accountSettings: NSButton!
 }
 
 class TransactionsTableCellView: NSTableCellView{

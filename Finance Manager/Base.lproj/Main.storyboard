@@ -792,7 +792,7 @@
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField identifier="accountName" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jr4-VL-mlb">
-                                                                    <rect key="frame" x="14" y="44" width="125" height="17"/>
+                                                                    <rect key="frame" x="6" y="44" width="116" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="Bank Account" id="Xwf-bK-qEJ">
                                                                         <font key="font" metaFont="systemSemibold" size="13"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -800,25 +800,39 @@
                                                                     </textFieldCell>
                                                                 </textField>
                                                                 <textField identifier="accountAmount" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8H8-0a-Va8">
-                                                                    <rect key="frame" x="14" y="9" width="125" height="27"/>
+                                                                    <rect key="frame" x="6" y="9" width="133" height="27"/>
                                                                     <textFieldCell key="cell" lineBreakMode="clipping" title="9999£" id="bsh-9m-xSG">
                                                                         <font key="font" metaFont="system" size="22"/>
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                 </textField>
+                                                                <button translatesAutoresizingMaskIntoConstraints="NO" id="rSi-5Z-uMf">
+                                                                    <rect key="frame" x="125" y="47" width="12" height="12"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="12" id="Ljt-uc-c2S"/>
+                                                                        <constraint firstAttribute="height" constant="12" id="wlZ-ZG-qTz"/>
+                                                                    </constraints>
+                                                                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSActionTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="in9-Qh-79g">
+                                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                        <font key="font" metaFont="system"/>
+                                                                    </buttonCell>
+                                                                </button>
                                                             </subviews>
                                                             <constraints>
+                                                                <constraint firstItem="rSi-5Z-uMf" firstAttribute="centerY" secondItem="jr4-VL-mlb" secondAttribute="centerY" id="6T0-XL-ReH"/>
                                                                 <constraint firstItem="jr4-VL-mlb" firstAttribute="top" secondItem="rNj-i8-4kj" secondAttribute="top" constant="8" id="72I-uh-UJa"/>
-                                                                <constraint firstItem="8H8-0a-Va8" firstAttribute="leading" secondItem="rNj-i8-4kj" secondAttribute="leading" constant="16" id="I1A-Mm-NLC"/>
-                                                                <constraint firstItem="jr4-VL-mlb" firstAttribute="leading" secondItem="rNj-i8-4kj" secondAttribute="leading" constant="16" id="UBu-sh-wQe"/>
+                                                                <constraint firstItem="8H8-0a-Va8" firstAttribute="leading" secondItem="rNj-i8-4kj" secondAttribute="leading" constant="8" id="I1A-Mm-NLC"/>
+                                                                <constraint firstItem="jr4-VL-mlb" firstAttribute="leading" secondItem="rNj-i8-4kj" secondAttribute="leading" constant="8" id="UBu-sh-wQe"/>
                                                                 <constraint firstItem="8H8-0a-Va8" firstAttribute="top" secondItem="jr4-VL-mlb" secondAttribute="bottom" constant="8" id="Ybv-7k-8fj"/>
-                                                                <constraint firstAttribute="trailing" secondItem="jr4-VL-mlb" secondAttribute="trailing" constant="8" id="i6q-iN-g89"/>
+                                                                <constraint firstItem="rSi-5Z-uMf" firstAttribute="leading" secondItem="jr4-VL-mlb" secondAttribute="trailing" constant="5" id="iEd-O9-7I2"/>
                                                                 <constraint firstAttribute="trailing" secondItem="8H8-0a-Va8" secondAttribute="trailing" constant="8" id="nrU-hv-rHI"/>
+                                                                <constraint firstAttribute="trailing" secondItem="rSi-5Z-uMf" secondAttribute="trailing" constant="8" id="zG1-ay-QMa"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="accountAmount" destination="8H8-0a-Va8" id="tH9-50-xlH"/>
                                                                 <outlet property="accountName" destination="jr4-VL-mlb" id="tFc-dV-IZF"/>
+                                                                <outlet property="accountSettings" destination="rSi-5Z-uMf" id="rIN-du-YJC"/>
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
@@ -964,6 +978,75 @@
             </objects>
             <point key="canvasLocation" x="681" y="655.5"/>
         </scene>
+        <!--Account Settings View Controller-->
+        <scene sceneID="uzC-n7-oKE">
+            <objects>
+                <viewController storyboardIdentifier="accountSettings" id="aTD-ZR-WwD" customClass="AccountSettingsViewController" customModule="Finance_Manager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="2Ru-MV-ILm">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cdc-Qi-BoJ">
+                                <rect key="frame" x="6" y="259" width="438" height="21"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Bank Account Settings" id="0ld-8O-c0B">
+                                    <font key="font" metaFont="systemSemibold" size="17"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="C2D-8H-IYs">
+                                <rect key="frame" x="20" y="224" width="91" height="17"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Account name" id="O5g-Ru-fgc">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="S7u-5e-SDf">
+                                <rect key="frame" x="20" y="194" width="410" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Jxj-6c-OC2">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="m2D-YU-1lA">
+                                <rect key="frame" x="20" y="260" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="7UE-c7-JFT"/>
+                                    <constraint firstAttribute="width" constant="20" id="r2V-IV-xMd"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSHomeTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="URk-i5-UAJ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="backHome:" target="aTD-ZR-WwD" id="TvJ-nC-8yb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="C2D-8H-IYs" firstAttribute="top" secondItem="cdc-Qi-BoJ" secondAttribute="bottom" constant="18" id="A84-ug-Xbu"/>
+                            <constraint firstItem="cdc-Qi-BoJ" firstAttribute="leading" secondItem="2Ru-MV-ILm" secondAttribute="leading" constant="8" id="Ivw-AT-Q71"/>
+                            <constraint firstItem="C2D-8H-IYs" firstAttribute="leading" secondItem="2Ru-MV-ILm" secondAttribute="leading" constant="22" id="QKc-tS-6UC"/>
+                            <constraint firstItem="cdc-Qi-BoJ" firstAttribute="centerX" secondItem="2Ru-MV-ILm" secondAttribute="centerX" id="blM-ts-dBl"/>
+                            <constraint firstAttribute="trailing" secondItem="cdc-Qi-BoJ" secondAttribute="trailing" constant="8" id="csr-ym-x08"/>
+                            <constraint firstItem="cdc-Qi-BoJ" firstAttribute="top" secondItem="2Ru-MV-ILm" secondAttribute="top" constant="20" id="emN-iE-8VR"/>
+                            <constraint firstItem="S7u-5e-SDf" firstAttribute="top" secondItem="C2D-8H-IYs" secondAttribute="bottom" constant="8" id="iie-Vi-RGG"/>
+                            <constraint firstItem="m2D-YU-1lA" firstAttribute="top" secondItem="2Ru-MV-ILm" secondAttribute="top" constant="20" id="lXr-dW-cwf"/>
+                            <constraint firstItem="S7u-5e-SDf" firstAttribute="leading" secondItem="2Ru-MV-ILm" secondAttribute="leading" constant="20" id="m4G-zM-wo5"/>
+                            <constraint firstItem="m2D-YU-1lA" firstAttribute="leading" secondItem="2Ru-MV-ILm" secondAttribute="leading" constant="20" id="trE-KR-cdo"/>
+                            <constraint firstAttribute="trailing" secondItem="S7u-5e-SDf" secondAttribute="trailing" constant="20" id="ud5-ZL-hws"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="accountName" destination="S7u-5e-SDf" id="MZa-zO-PMU"/>
+                    </connections>
+                </viewController>
+                <customObject id="YwB-x6-1lK" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="681" y="1035"/>
+        </scene>
         <!--Settings View Controller-->
         <scene sceneID="vOa-3q-F19">
             <objects>
@@ -980,5 +1063,6 @@
     </scenes>
     <resources>
         <image name="NSActionTemplate" width="14" height="14"/>
+        <image name="NSHomeTemplate" width="14" height="14"/>
     </resources>
 </document>

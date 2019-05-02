@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2B1E3625227776F700009E71 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B1E3624227776F700009E71 /* EventMonitor.swift */; };
 		2B3C5BEF2278E82A000A39A6 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3C5BEE2278E82A000A39A6 /* SettingsViewController.swift */; };
+		2B3C5BF3227AFC47000A39A6 /* AccountSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B3C5BF1227AFC47000A39A6 /* AccountSettingsViewController.swift */; };
 		2B9297B72274FB64008E7DC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9297B62274FB64008E7DC4 /* AppDelegate.swift */; };
 		2B9297B92274FB64008E7DC4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B9297B82274FB64008E7DC4 /* ViewController.swift */; };
 		2B9297BB2274FB65008E7DC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B9297BA2274FB65008E7DC4 /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 		2B1E3624227776F700009E71 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		2B3C5BEE2278E82A000A39A6 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2B3C5BF02278EC29000A39A6 /* Finance Manager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Finance Manager.entitlements"; sourceTree = "<group>"; };
+		2B3C5BF1227AFC47000A39A6 /* AccountSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSettingsViewController.swift; sourceTree = "<group>"; };
 		2B9297B32274FB64008E7DC4 /* Finance Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Finance Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B9297B62274FB64008E7DC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2B9297B82274FB64008E7DC4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				2B9297E22274FE7D008E7DC4 /* MainInfoViewController.swift */,
 				2B1E3624227776F700009E71 /* EventMonitor.swift */,
 				2B3C5BEE2278E82A000A39A6 /* SettingsViewController.swift */,
+				2B3C5BF1227AFC47000A39A6 /* AccountSettingsViewController.swift */,
 			);
 			path = "Finance Manager";
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				2B9297E32274FE7D008E7DC4 /* MainInfoViewController.swift in Sources */,
 				2B3C5BEF2278E82A000A39A6 /* SettingsViewController.swift in Sources */,
 				2B1E3625227776F700009E71 /* EventMonitor.swift in Sources */,
+				2B3C5BF3227AFC47000A39A6 /* AccountSettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
